@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <PathMap>$(MSBuildProjectDirectory)=/_/</PathMap>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <!-- NuGet package. CI overrides Version from the release tag (v1.2.3 => 1.2.3). -->
+  <PropertyGroup>
+    <PackageId>Patternimorph</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>elebree</Authors>
+    <Copyright>Copyright (c) 2026 elebree</Copyright>
+    <Description>Converts a subset of .NET regular expressions into SQL LIKE or SQLite GLOB patterns
+      whose OR-combination matches exactly the same strings, so regex filters can run inside the
+      database. No approximations: a regex without an exact equivalent is rejected.</Description>
+    <PackageTags>regex;regular-expression;sql;like;glob;sqlite;pattern;converter;filter</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/elebree/patternimorph</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/elebree/patternimorph.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>https://github.com/elebree/patternimorph/releases</PackageReleaseNotes>
+
+    <!-- SourceLink (built into the .NET 8+ SDK) and symbol package. -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+
+    <EnablePackageValidation>true</EnablePackageValidation>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>
