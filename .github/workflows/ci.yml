@@ -24,7 +24,14 @@ jobs:
 
       - run: dotnet build Patternimorph.sln -c Release
 
-      - run: dotnet test Patternimorph.sln -c Release --no-build
+      - run: dotnet test Patternimorph.sln -c Release --no-build --collect:"XPlat Code Coverage" --results-directory coverage
+
+      - uses: codecov/codecov-action@v5
+        if: matrix.os == 'ubuntu-latest'
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/**/coverage.cobertura.xml
+          fail_ci_if_error: true
 
       - name: Pack
         if: matrix.os == 'ubuntu-latest'

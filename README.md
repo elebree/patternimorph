@@ -1,5 +1,10 @@
 # Patternimorph
 
+[![NuGet](https://img.shields.io/nuget/v/Patternimorph.svg)](https://www.nuget.org/packages/Patternimorph)
+[![NuGet downloads](https://img.shields.io/nuget/dt/Patternimorph.svg)](https://www.nuget.org/packages/Patternimorph)
+[![CI](https://img.shields.io/github/actions/workflow/status/elebree/patternimorph/ci.yml?branch=main&label=CI)](https://github.com/elebree/patternimorph/actions/workflows/ci.yml)
+[![Coverage](https://img.shields.io/codecov/c/github/elebree/patternimorph/main.svg)](https://codecov.io/gh/elebree/patternimorph)
+[![.NET Standard 2.0](https://img.shields.io/badge/.NET%20Standard-2.0-512BD4.svg)](https://learn.microsoft.com/dotnet/standard/net-standard?tabs=net-standard-2-0)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/elebree/patternimorph/blob/HEAD/LICENSE)
 
 Converts a subset of .NET regular expressions into SQL `LIKE` patterns or SQLite `GLOB` patterns (GLOB supports a wider subset). One class, `RegexToSqlPattern`, does both; the output format is chosen with `RegexConversionOptions.Format`. A regex filter can then run inside the database (and use its engine) instead of pulling every row into .NET.

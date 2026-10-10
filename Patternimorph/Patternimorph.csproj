@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <PathMap>$(MSBuildProjectDirectory)=/_/</PathMap>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
 
