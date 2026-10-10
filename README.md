@@ -175,7 +175,7 @@ dotnet build Patternimorph.sln -c Release
 dotnet test
 ```
 
-The `Patternimorph.Tests` project (xUnit, net9.0) covers:
+The `Patternimorph.Tests` project (NUnit, net10.0) covers:
 
 - **Conversion:** exact GLOB and LIKE output for each supported construct, the options, and the SQL predicate builders.
 - **Rejection:** unsupported regexes throw `NotSupportedException`, and each one is checked to be a valid .NET regex. Malformed ones throw `FormatException`, and each one is checked to be rejected by .NET too.
