@@ -60,11 +60,16 @@ jobs:
           --skip-duplicate
           --no-symbols
 
+      # A release created by hand for this tag is kept; the packages are attached to it.
       - name: GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: >
-          gh release create "$GITHUB_REF_NAME" artifacts/*
-          --title "$GITHUB_REF_NAME"
-          --generate-notes
-          ${{ contains(steps.version.outputs.version, '-') && '--prerelease' || '' }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" artifacts/* --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" artifacts/* \
+              --title "$GITHUB_REF_NAME" \
+              --generate-notes \
+              ${{ contains(steps.version.outputs.version, '-') && '--prerelease' || '' }}
+          fi
